@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Receta {
+struct Receta : Decodable{
     let RecetaID: Int?
     let Nombre: String?
     let Descripcion: String?
