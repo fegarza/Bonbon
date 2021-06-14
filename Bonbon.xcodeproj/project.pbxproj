@@ -15,6 +15,11 @@
 		BE6A5FF52676D56600B4591B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6A5FF32676D56600B4591B /* LaunchScreen.storyboard */; };
 		BE6A60002676D56600B4591B /* BonbonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FFF2676D56600B4591B /* BonbonTests.swift */; };
 		BE6A600B2676D56600B4591B /* BonbonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A600A2676D56600B4591B /* BonbonUITests.swift */; };
+		BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187892676EF1700E9DD19 /* ListadoController.swift */; };
+		BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187912676EF3600E9DD19 /* CreadoController.swift */; };
+		BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187962676EF4400E9DD19 /* EditadoController.swift */; };
+		BEA1879C2676EF5400E9DD19 /* Receta.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA1879B2676EF5400E9DD19 /* Receta.swift */; };
+		BEA187A12676EF9100E9DD19 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187A02676EF9100E9DD19 /* Categoria.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		BE6A60062676D56600B4591B /* BonbonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BonbonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6A600A2676D56600B4591B /* BonbonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonbonUITests.swift; sourceTree = "<group>"; };
 		BE6A600C2676D56600B4591B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEA187892676EF1700E9DD19 /* ListadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoController.swift; sourceTree = "<group>"; };
+		BEA187912676EF3600E9DD19 /* CreadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreadoController.swift; sourceTree = "<group>"; };
+		BEA187962676EF4400E9DD19 /* EditadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditadoController.swift; sourceTree = "<group>"; };
+		BEA1879B2676EF5400E9DD19 /* Receta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receta.swift; sourceTree = "<group>"; };
+		BEA187A02676EF9100E9DD19 /* Categoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,8 @@
 		BE6A5FE72676D56500B4591B /* Bonbon */ = {
 			isa = PBXGroup;
 			children = (
+				BEA187862676EEA900E9DD19 /* Controllers */,
+				BEA187852676EE9800E9DD19 /* Entidades */,
 				BE6A5FE82676D56500B4591B /* AppDelegate.swift */,
 				BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */,
 				BE6A5FEC2676D56500B4591B /* ViewController.swift */,
@@ -126,6 +138,25 @@
 				BE6A600C2676D56600B4591B /* Info.plist */,
 			);
 			path = BonbonUITests;
+			sourceTree = "<group>";
+		};
+		BEA187852676EE9800E9DD19 /* Entidades */ = {
+			isa = PBXGroup;
+			children = (
+				BEA1879B2676EF5400E9DD19 /* Receta.swift */,
+				BEA187A02676EF9100E9DD19 /* Categoria.swift */,
+			);
+			path = Entidades;
+			sourceTree = "<group>";
+		};
+		BEA187862676EEA900E9DD19 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEA187892676EF1700E9DD19 /* ListadoController.swift */,
+				BEA187912676EF3600E9DD19 /* CreadoController.swift */,
+				BEA187962676EF4400E9DD19 /* EditadoController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEA1879C2676EF5400E9DD19 /* Receta.swift in Sources */,
+				BEA187A12676EF9100E9DD19 /* Categoria.swift in Sources */,
 				BE6A5FED2676D56500B4591B /* ViewController.swift in Sources */,
+				BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */,
 				BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */,
+				BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */,
+				BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */,
 				BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
