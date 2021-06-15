@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 class ViewController: UIViewController {
 
+    @IBAction func IngresarAction(_ sender: Any) {
+        AudioServicesPlaySystemSound(SystemSoundID(1000))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

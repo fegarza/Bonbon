@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import UIKit
+import AVFoundation
+import AudioToolbox
+
+
+class CreadoController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func crearRecetaAction(_ sender: Any) {
+        //esto hace ruido xd
+        AudioServicesPlaySystemSound(SystemSoundID(1000))
+    }
+}
+
