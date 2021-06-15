@@ -11,7 +11,6 @@ import UIKit
 
 class ListadoController: UITableViewController{
     
-    var recetas: Array<Receta> = Array()
     
     override func viewDidLoad() {
         traerDatos()
@@ -25,48 +24,45 @@ class ListadoController: UITableViewController{
         return recetas.count
     }
     
-    
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
         cell.textLabel?.text = recetas[indexPath.row].Nombre
         return cell
     }
-    
-    
-    
-    func llenarDatos(){
-        for x in 1...5{
-            recetas.append(Receta(RecetaID: x,Nombre:"Ejemplo",Descripcion: "", Dificultad: "",TiempoCoccion:  "", Categoria: "", NUsuario: ""))
-        }
-       
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        recetaSeleccionada = recetas[indexPath.row]
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "editarView") as! EditadoController
+        self.present(balanceViewController, animated: true, completion: nil)
     }
+    
     
     func traerDatos(){
         let direccion = "https://fegarza.com/api/?operacion=3"
         
-        guard let url = URL(string: direccion) else { return }
-        
-        var peticion = URLRequest(url: url)
-        peticion.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: peticion)
-        {
-            (data, response, error) in
-            DispatchQueue.main.async
+        var creadorDePeticion = PeticionBuilder(endpoint: direccion, operacion: Operacion.consulta)
+                
+        do{
+            var peticion = try creadorDePeticion.build()
+            URLSession.shared.dataTask(with: peticion)
             {
-                guard let datos =  data else { return }
-                do
+                (data, response, error) in
+                DispatchQueue.main.async
                 {
-                    self.recetas = try JSONDecoder().decode([Receta].self, from: datos)
-                }catch let jsonError{
-                    print(jsonError)
+                    guard let datos =  data else { return }
+                    do
+                    {
+                        recetas = try JSONDecoder().decode([Receta].self, from: datos)
+                    }catch let jsonError{
+                        print(jsonError)
+                    }
+                    self.tableView.reloadData();
                 }
-                self.tableView.reloadData();
-            }
+                
+            }.resume()
+        }catch{
             
-        }.resume()
+        }
     }
     
     

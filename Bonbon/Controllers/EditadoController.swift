@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+class EditadoController: UIViewController{
+    
+    @IBOutlet weak var tfNombre: UITextField!
+    override func viewDidLoad() {
+        tfNombre.text = recetaSeleccionada?.Nombre
+    }
+    
+    
+    
+}

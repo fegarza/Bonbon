@@ -15,6 +15,10 @@
 		BE6A5FF52676D56600B4591B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6A5FF32676D56600B4591B /* LaunchScreen.storyboard */; };
 		BE6A60002676D56600B4591B /* BonbonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FFF2676D56600B4591B /* BonbonTests.swift */; };
 		BE6A600B2676D56600B4591B /* BonbonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A600A2676D56600B4591B /* BonbonUITests.swift */; };
+		BE6AC20A267832A400F07769 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC209267832A400F07769 /* APIManager.swift */; };
+		BE6AC2152678342D00F07769 /* Operacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC2142678342D00F07769 /* Operacion.swift */; };
+		BE6AC21D2678372100F07769 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC21C2678372000F07769 /* ErrorManager.swift */; };
+		BE6AC2222678393700F07769 /* PeticionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC2212678393700F07769 /* PeticionBuilder.swift */; };
 		BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187892676EF1700E9DD19 /* ListadoController.swift */; };
 		BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187912676EF3600E9DD19 /* CreadoController.swift */; };
 		BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187962676EF4400E9DD19 /* EditadoController.swift */; };
@@ -54,6 +58,10 @@
 		BE6A60062676D56600B4591B /* BonbonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BonbonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6A600A2676D56600B4591B /* BonbonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonbonUITests.swift; sourceTree = "<group>"; };
 		BE6A600C2676D56600B4591B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE6AC209267832A400F07769 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BE6AC2142678342D00F07769 /* Operacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operacion.swift; sourceTree = "<group>"; };
+		BE6AC21C2678372000F07769 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		BE6AC2212678393700F07769 /* PeticionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeticionBuilder.swift; sourceTree = "<group>"; };
 		BEA187892676EF1700E9DD19 /* ListadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoController.swift; sourceTree = "<group>"; };
 		BEA187912676EF3600E9DD19 /* CreadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreadoController.swift; sourceTree = "<group>"; };
 		BEA187962676EF4400E9DD19 /* EditadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditadoController.swift; sourceTree = "<group>"; };
@@ -109,6 +117,8 @@
 		BE6A5FE72676D56500B4591B /* Bonbon */ = {
 			isa = PBXGroup;
 			children = (
+				BE6AC2082678328900F07769 /* Manejadores */,
+				BE6AC2072678322B00F07769 /* Comandos */,
 				BEA187862676EEA900E9DD19 /* Controllers */,
 				BEA187852676EE9800E9DD19 /* Entidades */,
 				BE6A5FE82676D56500B4591B /* AppDelegate.swift */,
@@ -138,6 +148,24 @@
 				BE6A600C2676D56600B4591B /* Info.plist */,
 			);
 			path = BonbonUITests;
+			sourceTree = "<group>";
+		};
+		BE6AC2072678322B00F07769 /* Comandos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comandos;
+			sourceTree = "<group>";
+		};
+		BE6AC2082678328900F07769 /* Manejadores */ = {
+			isa = PBXGroup;
+			children = (
+				BE6AC209267832A400F07769 /* APIManager.swift */,
+				BE6AC2142678342D00F07769 /* Operacion.swift */,
+				BE6AC21C2678372000F07769 /* ErrorManager.swift */,
+				BE6AC2212678393700F07769 /* PeticionBuilder.swift */,
+			);
+			path = Manejadores;
 			sourceTree = "<group>";
 		};
 		BEA187852676EE9800E9DD19 /* Entidades */ = {
@@ -293,9 +321,13 @@
 				BEA187A12676EF9100E9DD19 /* Categoria.swift in Sources */,
 				BE6A5FED2676D56500B4591B /* ViewController.swift in Sources */,
 				BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */,
+				BE6AC21D2678372100F07769 /* ErrorManager.swift in Sources */,
+				BE6AC2152678342D00F07769 /* Operacion.swift in Sources */,
+				BE6AC2222678393700F07769 /* PeticionBuilder.swift in Sources */,
 				BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */,
 				BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */,
 				BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */,
+				BE6AC20A267832A400F07769 /* APIManager.swift in Sources */,
 				BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
