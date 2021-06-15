@@ -265,6 +265,13 @@
                     <tabBarItem key="tabBarItem" title="Nueva receta" image="plus" catalog="system" selectedImage="plus" id="tQx-7O-1nf">
                         <color key="badgeColor" red="1" green="0.63403850790000005" blue="0.50019657610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="DificultadControl" destination="nDX-KW-1NP" id="cCA-rd-xSB"/>
+                        <outlet property="categoriaPicker" destination="53L-ys-VTA" id="2gc-Lk-aQv"/>
+                        <outlet property="nombreRecetaText" destination="sKt-Ju-coh" id="BYz-JP-J5n"/>
+                        <outlet property="procedimientoText" destination="KqG-ts-mpV" id="zLr-0r-PNF"/>
+                        <outlet property="tiempoCoccionText" destination="Ytr-Gv-M1X" id="h8V-cz-oLp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSD-nf-fmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
