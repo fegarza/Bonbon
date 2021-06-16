@@ -38,9 +38,8 @@ class ListadoController: UITableViewController{
     
     
     func traerDatos(){
-        let direccion = "https://fegarza.com/api/?operacion=3"
         
-        var creadorDePeticion = PeticionBuilder(endpoint: direccion, operacion: Operacion.consulta)
+        var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.consulta)
                 
         do{
             var peticion = try creadorDePeticion.build()

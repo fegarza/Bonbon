@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE141D8F2679895F00D2D8E5 /* BonbonTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE141D8E2679895F00D2D8E5 /* BonbonTabBarController.swift */; };
+		BE141D9726798D7300D2D8E5 /* PreferenciasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE141D9626798D7300D2D8E5 /* PreferenciasController.swift */; };
 		BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FE82676D56500B4591B /* AppDelegate.swift */; };
 		BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */; };
 		BE6A5FED2676D56500B4591B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FEC2676D56500B4591B /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE141D8E2679895F00D2D8E5 /* BonbonTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonbonTabBarController.swift; sourceTree = "<group>"; };
+		BE141D9626798D7300D2D8E5 /* PreferenciasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenciasController.swift; sourceTree = "<group>"; };
 		BE6A5FE52676D56500B4591B /* Bonbon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonbon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6A5FE82676D56500B4591B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				BE6AC2082678328900F07769 /* Manejadores */,
-				BE6AC2072678322B00F07769 /* Comandos */,
 				BEA187862676EEA900E9DD19 /* Controllers */,
 				BEA187852676EE9800E9DD19 /* Entidades */,
 				BE6A5FE82676D56500B4591B /* AppDelegate.swift */,
@@ -150,13 +153,6 @@
 			path = BonbonUITests;
 			sourceTree = "<group>";
 		};
-		BE6AC2072678322B00F07769 /* Comandos */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Comandos;
-			sourceTree = "<group>";
-		};
 		BE6AC2082678328900F07769 /* Manejadores */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +179,8 @@
 				BEA187892676EF1700E9DD19 /* ListadoController.swift */,
 				BEA187912676EF3600E9DD19 /* CreadoController.swift */,
 				BEA187962676EF4400E9DD19 /* EditadoController.swift */,
+				BE141D8E2679895F00D2D8E5 /* BonbonTabBarController.swift */,
+				BE141D9626798D7300D2D8E5 /* PreferenciasController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -325,9 +323,11 @@
 				BE6AC2152678342D00F07769 /* Operacion.swift in Sources */,
 				BE6AC2222678393700F07769 /* PeticionBuilder.swift in Sources */,
 				BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */,
+				BE141D8F2679895F00D2D8E5 /* BonbonTabBarController.swift in Sources */,
 				BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */,
 				BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */,
 				BE6AC20A267832A400F07769 /* APIManager.swift in Sources */,
+				BE141D9726798D7300D2D8E5 /* PreferenciasController.swift in Sources */,
 				BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

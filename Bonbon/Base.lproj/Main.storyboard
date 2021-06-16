@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w83-p2-Rlz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w83-p2-Rlz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,12 +73,19 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="93.75"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Bondon Tab Bar Controller-->
         <scene sceneID="blh-UJ-byK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oOB-ew-Pp6" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="oOB-ew-Pp6" customClass="BondonTabBarController" customModule="Bonbon" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="EqF-ET-Pd9"/>
+                    <navigationItem key="navigationItem" id="EqF-ET-Pd9">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" id="GEp-2w-S6r"/>
+                        <barButtonItem key="rightBarButtonItem" title="Preferencias" id="1vO-2z-s8u">
+                            <connections>
+                                <segue destination="UbA-w8-E0c" kind="show" id="beF-Ae-Vcx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bQI-p7-wBM">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -94,6 +101,76 @@
             </objects>
             <point key="canvasLocation" x="1853.6231884057972" y="93.75"/>
         </scene>
+        <!--Preferencias de usuario-->
+        <scene sceneID="hNG-E5-2Xt">
+            <objects>
+                <viewController id="UbA-w8-E0c" customClass="PreferenciasController" customModule="Bonbon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nm0-jR-vPp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nD5-EQ-XuI">
+                                <rect key="frame" x="32" y="163" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="modificarSonido:" destination="ztV-1e-M3o" eventType="valueChanged" id="WF1-vZ-dCb"/>
+                                    <action selector="modificarSonido:" destination="UbA-w8-E0c" eventType="valueChanged" id="X3y-ZW-HZa"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quiero escuchar sonidos en la aplicacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVP-1d-l0Q">
+                                <rect key="frame" x="32" y="123" width="350" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quiero que la aplicacion vibre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-hZ-5IE">
+                                <rect key="frame" x="32" y="225" width="224" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-gI-URe">
+                                <rect key="frame" x="32" y="262" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="modificarVibracion:" destination="UbA-w8-E0c" eventType="valueChanged" id="vxh-Ix-Uih"/>
+                                    <action selector="modificarVibracion:" destination="ztV-1e-M3o" eventType="valueChanged" id="wIT-5P-8ew"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Introduzca su nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA1-FL-bOE">
+                                <rect key="frame" x="32" y="328" width="166" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9b-pU-jZT">
+                                <rect key="frame" x="32" y="357" width="329" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="cambiarNombre:" destination="UbA-w8-E0c" eventType="editingChanged" id="9H3-V9-hCJ"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9LU-Zu-CEf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Preferencias de usuario" id="26t-Xc-LeD"/>
+                    <connections>
+                        <outlet property="swSonido" destination="nD5-EQ-XuI" id="RKW-9G-ajp"/>
+                        <outlet property="swVibracion" destination="ISE-gI-URe" id="JMc-cf-kKz"/>
+                        <outlet property="textNombre" destination="Q9b-pU-jZT" id="hYi-ND-eJ3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YhU-q9-S5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ztV-1e-M3o" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1854" y="-597"/>
+        </scene>
         <!--Listado de recetas-->
         <scene sceneID="jCs-2a-7A3">
             <objects>
@@ -104,7 +181,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celda" textLabel="859-pM-A1w" style="IBUITableViewCellStyleDefault" id="BYh-bv-SBN">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BYh-bv-SBN" id="352-sG-LwC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -216,11 +293,6 @@
                                     <segment title="Medio"/>
                                     <segment title="Dificil"/>
                                 </segments>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="Facil" value="Facil"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="Medio" value="Medio"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="Dificil" value="Dificil"/>
-                                </userDefinedRuntimeAttributes>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ytr-Gv-M1X">
                                 <rect key="frame" x="42" y="387" width="331" height="34"/>
@@ -268,6 +340,7 @@
                     <connections>
                         <outlet property="DificultadControl" destination="nDX-KW-1NP" id="cCA-rd-xSB"/>
                         <outlet property="categoriaPicker" destination="53L-ys-VTA" id="2gc-Lk-aQv"/>
+                        <outlet property="dificultadControl" destination="nDX-KW-1NP" id="DuK-GN-Wmj"/>
                         <outlet property="nombreRecetaText" destination="sKt-Ju-coh" id="BYz-JP-J5n"/>
                         <outlet property="procedimientoText" destination="KqG-ts-mpV" id="zLr-0r-PNF"/>
                         <outlet property="tiempoCoccionText" destination="Ytr-Gv-M1X" id="h8V-cz-oLp"/>

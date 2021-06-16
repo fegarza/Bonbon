@@ -26,13 +26,18 @@ class PeticionBuilder{
     
     
     func build() throws -> URLRequest{
-        guard let url = URL(string: self.endpoint + "?operacion=\(operacion.rawValue)") else{
+        guard let url = URL(string: self.endpoint + "?operacion=\(String(operacion.rawValue))") else{
             throw ErrorManager.runtimeError("No se ha logrado crear la instancia de URL")
         }
         
         var peticion = URLRequest(url: url)
         
-        peticion.httpMethod = "GET"
+        if(self.operacion == Operacion.consulta && self.receta == nil){
+            peticion.httpMethod = "GET"
+        }else{
+            peticion.httpMethod = "POST"
+        }
+        
         peticion.httpBody = obtenerParametros().data(using: .utf8)
         
         return peticion;
@@ -40,7 +45,7 @@ class PeticionBuilder{
     
     
     func obtenerParametros() -> String{
-        if(receta != nil){
+        if(receta == nil){
             return "";
         }
         
@@ -48,13 +53,13 @@ class PeticionBuilder{
         
         switch self.operacion{
             case Operacion.alta, Operacion.edicion:
-                cadenaDeParametros =  "?Nombre=\(self.receta?.Nombre)&Descripcion=\(self.receta?.Dificultad)&Dificultad=\(self.receta?.Dificultad)&TiempoCoccion=\(self.receta?.TiempoCoccion)&Categoria\(self.receta?.Categoria)"
+                cadenaDeParametros =  "Nombre=\(self.receta!.Nombre!)&Descripcion=\(self.receta!.Descripcion!)&Dificultad=\(self.receta!.Dificultad!)&TiempoCoccion=\(self.receta!.TiempoCoccion!)&Categoria=\(self.receta!.Categoria!)"
                 if(self.operacion == Operacion.edicion){
-                    cadenaDeParametros += "&recetaID="+String(self.receta!.RecetaID!)
+                    cadenaDeParametros += "&RecetaID="+String(self.receta!.RecetaID!)
                 }
             case Operacion.baja, Operacion.consulta:
                 if(self.receta?.RecetaID != nil){
-                    cadenaDeParametros = "?RecetaID="+String(self.receta!.RecetaID!)
+                    cadenaDeParametros = "RecetaID="+String(self.receta!.RecetaID!)
                 }
         }
         

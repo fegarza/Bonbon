@@ -11,12 +11,16 @@ import AudioToolbox
 
 class ViewController: UIViewController {
 
+    let defaults = UserDefaults.standard
+    
     @IBAction func IngresarAction(_ sender: Any) {
-        AudioServicesPlaySystemSound(SystemSoundID(1000))
+        if(defaults.bool(forKey: "sonido")){
+            AudioServicesPlaySystemSound(SystemSoundID(1000))
+        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 

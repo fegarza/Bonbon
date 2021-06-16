@@ -10,6 +10,6 @@ import Foundation
 enum Operacion: String{
     case alta = "1"
     case edicion = "2"
-    case baja = "3"
-    case consulta = "4"
+    case consulta = "3"
+    case baja = "4"
 }
