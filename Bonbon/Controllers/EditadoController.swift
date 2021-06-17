@@ -7,14 +7,122 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+import AudioToolbox
 
-class EditadoController: UIViewController{
-    
+class EditadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+
     @IBOutlet weak var tfNombre: UITextField!
+    @IBOutlet weak var textProcedimiento: UITextField!
+    @IBOutlet weak var swDificultad: UISegmentedControl!
+    @IBOutlet weak var textTiempoCoccion: UITextField!
+    @IBOutlet weak var pickerCategoria: UIPickerView!
+    
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         tfNombre.text = recetaSeleccionada?.Nombre
+        tfNombre.delegate = self
+        
+        textProcedimiento.text = recetaSeleccionada?.Descripcion
+        textProcedimiento.delegate = self
+        
+        textTiempoCoccion.text = recetaSeleccionada?.TiempoCoccion
+        textTiempoCoccion.delegate = self
+        
+        pickerCategoria.dataSource = self
+        pickerCategoria.delegate = self
+        
+        switch (recetaSeleccionada?.Dificultad){
+        case "Facil":
+            swDificultad.selectedSegmentIndex = 0
+        case "Medio":
+            swDificultad.selectedSegmentIndex = 1
+        case "Dificil":
+            swDificultad.selectedSegmentIndex = 2
+        default:
+            break;
+        }
+        
+        switch (recetaSeleccionada?.Categoria){
+        case "desayuno":
+            self.pickerCategoria.selectRow(0, inComponent: 0, animated: true)
+        case "cena":
+            self.pickerCategoria.selectRow(1, inComponent: 0, animated: true)
+        case "almuerzo":
+            self.pickerCategoria.selectRow(2, inComponent: 0, animated: true)
+        case "postre":
+            self.pickerCategoria.selectRow(3, inComponent: 0, animated: true)
+        default:
+            break;
+        }
+        
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            self.view.endEditing(true)
+            return false
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Categoria.allCases.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(describing: Categoria.allCases[row])
+    }
+    
+    
+    @IBAction func guardar(_ sender: UIButton) {
+        do{
+            
+            recetaSeleccionada!.Categoria = String(describing: Categoria.allCases[self.pickerCategoria.selectedRow(inComponent: 0)]);
+            recetaSeleccionada!.TiempoCoccion = self.textTiempoCoccion.text
+            recetaSeleccionada!.Descripcion = self.textProcedimiento.text
+            recetaSeleccionada!.Nombre = self.tfNombre.text
+            recetaSeleccionada!.Dificultad = self.swDificultad.titleForSegment(at: self.swDificultad.selectedSegmentIndex)
+            
+            var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
+            
+            var peticion = try creadorDePeticion.build()
+            
+            URLSession.shared.dataTask(with: peticion)
+            {
+                (data, response, error) in
+                DispatchQueue.main.async
+                {
+                    //print("XDD .___./")
+                    //print(data)
+                    print(response)
+                    self.mostrarMensajeCorrecto(mensaje: "La receta ha sido añadida")
+                }
+                
+            }.resume()
+        }catch let error{
+            print(error)
+            self.mostrarMensajeDeError(mensaje: "Error al crear receta")
+        }
+    }
+    
+    func mostrarMensajeDeError(mensaje: String){
+        if(defaults.bool(forKey: "vibracion")){
+            AudioServicesPlaySystemSound(SystemSoundID(4095))
+        }
+        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func mostrarMensajeCorrecto(mensaje: String){
+        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
     
     
 }

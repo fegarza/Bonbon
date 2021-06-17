@@ -9,10 +9,10 @@ import Foundation
 
 struct Receta : Decodable{
     let RecetaID: Int?
-    let Nombre: String?
-    let Descripcion: String?
-    let Dificultad: String?
-    let TiempoCoccion: String?
-    let Categoria: String?
-    let NUsuario: String?
+    var Nombre: String?
+    var Descripcion: String?
+    var Dificultad: String?
+    var TiempoCoccion: String?
+    var Categoria: String?
+    var NUsuario: String?
 }

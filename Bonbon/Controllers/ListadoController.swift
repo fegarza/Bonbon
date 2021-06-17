@@ -16,6 +16,10 @@ class ListadoController: UITableViewController{
         traerDatos()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        traerDatos()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum Categoria{
+enum Categoria: CaseIterable{
     case desayuno
     case cena
     case almuerzo
-    case postre
+    case postre  
 }
