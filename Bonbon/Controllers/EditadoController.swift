@@ -78,6 +78,7 @@ class EditadoController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     
     @IBAction func guardar(_ sender: UIButton) {
+        
         do{
             
             recetaSeleccionada!.Categoria = String(describing: Categoria.allCases[self.pickerCategoria.selectedRow(inComponent: 0)]);
@@ -86,17 +87,15 @@ class EditadoController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             recetaSeleccionada!.Nombre = self.tfNombre.text
             recetaSeleccionada!.Dificultad = self.swDificultad.titleForSegment(at: self.swDificultad.selectedSegmentIndex)
             
-            var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
+           // let creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
             
-            var peticion = try creadorDePeticion.build()
+            let peticion = try  URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
             
             URLSession.shared.dataTask(with: peticion)
             {
                 (data, response, error) in
                 DispatchQueue.main.async
                 {
-                    //print("XDD .___./")
-                    //print(data)
                     print(response)
                     self.mostrarMensajeCorrecto(mensaje: "La receta ha sido añadida")
                 }

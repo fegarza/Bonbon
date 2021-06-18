@@ -50,8 +50,17 @@ class CreadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     }
 
     @IBAction func crearRecetaAction(_ sender: Any) {
-    
+        //_ = navigationController?.popViewController(animated: true)
+        //_ = navigationController?.popToRootViewController(animated: true)
+        //let vista = storyboard?.instantiateViewController(identifier: "tabBarController")
+        //self.navigationController?.pushViewController(vista!,  animated: true)
+        //self.tabBarController!.selectedViewController = vista//(vista!, animated: true)
+        //var tabBarController: UITabBarController = self.window?.rootViewController as UITabBarController
+        //tabBarController.selectedIndex = 1
+        //self.tabBarController?.selectedViewController = self.tabBarController?.viewControllers?.last
+
         if(!self.verificarFormulario()){
+            
             return;
         }
         
@@ -65,10 +74,10 @@ class CreadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             NUsuario: ""
         )
         
-        var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
+        //var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
                     
             do{
-                var peticion = try creadorDePeticion.build()
+                var peticion = try URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
                 URLSession.shared.dataTask(with: peticion)
                 {
                     (data, response, error) in
@@ -77,10 +86,16 @@ class CreadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
                         guard let datos =  data else { return }
                         do
                         {
-                            print(datos)
-                            var recetasDevueltas = try JSONDecoder().decode([Receta].self, from: datos)
+                            
+                            let recetasDevueltas = try JSONDecoder().decode([Receta].self, from: datos)
                             recetas.append(recetasDevueltas.first!)
                             self.mostrarMensajeCorrecto(mensaje: "La receta ha sido añadida")
+                            
+                            
+//                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//                            let listadoViewController = storyBoard.instantiateViewController(withIdentifier: "listadoView") as! ListadoController
+//                            self.present(listadoViewController, animated: true, completion: nil)
+                            
                             
                         }catch let jsonError{
                             print(jsonError)
