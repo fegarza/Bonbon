@@ -19,52 +19,52 @@ class CreadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBOutlet weak var tiempoCoccionText: UITextField!
     @IBOutlet weak var categoriaPicker: UIPickerView!
     
-    let defaults = UserDefaults.standard
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.reiniciarFormulario()
         
         self.categoriaPicker.delegate = self
         self.categoriaPicker.dataSource = self
         self.tiempoCoccionText.delegate = self
         self.procedimientoText.delegate = self
         self.nombreRecetaText.delegate = self
+        
+        self.tiempoCoccionText.addDoneButtonToKeyboard(myAction:  #selector(self.tiempoCoccionText.resignFirstResponder));
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            self.view.endEditing(true)
-            return false
+        self.view.endEditing(true)
+        
+        return false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Categoria.allCases.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(describing: Categoria.allCases[row])
     }
-
+    
     @IBAction func crearRecetaAction(_ sender: Any) {
-        //_ = navigationController?.popViewController(animated: true)
-        //_ = navigationController?.popToRootViewController(animated: true)
-        //let vista = storyboard?.instantiateViewController(identifier: "tabBarController")
-        //self.navigationController?.pushViewController(vista!,  animated: true)
-        //self.tabBarController!.selectedViewController = vista//(vista!, animated: true)
-        //var tabBarController: UITabBarController = self.window?.rootViewController as UITabBarController
-        //tabBarController.selectedIndex = 1
-        //self.tabBarController?.selectedViewController = self.tabBarController?.viewControllers?.last
-
-        if(!self.verificarFormulario()){
-            
-            return;
-        }
+        let recetaNueva = traerReceta()
         
-        let recetaNueva = Receta(
+        let validator = RecetaValidator(receta: recetaNueva);
+        
+        if(validator.isValid()){
+            self.crearReceta(recetaNueva: recetaNueva)
+        }else{
+            self.present(controlador: UIAlertController(bonbonTipo: .error, mensaje: validator.getErrors()), tipo: UIAlertController.BonbonAlertType.error)
+        }
+    }
+    
+    func traerReceta() -> Receta{
+        return Receta(
             RecetaID: nil,
             Nombre: self.nombreRecetaText.text,
             Descripcion: self.procedimientoText.text,
@@ -73,69 +73,40 @@ class CreadoController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             Categoria: String(describing: Categoria.allCases[self.categoriaPicker.selectedRow(inComponent: 0)]),
             NUsuario: ""
         )
-        
-        //var creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
-                    
-            do{
-                var peticion = try URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
-                URLSession.shared.dataTask(with: peticion)
+    }
+    
+    func crearReceta(recetaNueva: Receta){
+        do{
+            let peticion = try URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.alta, receta: recetaNueva)
+            
+            URLSession.shared.dataTask(with: peticion)
+            {
+                (data, response, error) in
+                DispatchQueue.main.async
                 {
-                    (data, response, error) in
-                    DispatchQueue.main.async
+                    guard let datos =  data else { return }
+                    do
                     {
-                        guard let datos =  data else { return }
-                        do
-                        {
-                            
-                            let recetasDevueltas = try JSONDecoder().decode([Receta].self, from: datos)
-                            recetas.append(recetasDevueltas.first!)
-                            self.mostrarMensajeCorrecto(mensaje: "La receta ha sido añadida")
-                            
-                            
-//                            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//                            let listadoViewController = storyBoard.instantiateViewController(withIdentifier: "listadoView") as! ListadoController
-//                            self.present(listadoViewController, animated: true, completion: nil)
-                            
-                            
-                        }catch let jsonError{
-                            print(jsonError)
-                            self.mostrarMensajeDeError(mensaje:  jsonError.localizedDescription)
-                        }
-                         
+                        let recetasDevueltas = try JSONDecoder().decode([Receta].self, from: datos)
+                        recetas.append(recetasDevueltas.first!)
+                        self.present(controlador: UIAlertController(bonbonTipo: .informativo, mensaje: "Se ha creado la receta con exito"), tipo: UIAlertController.BonbonAlertType.informativo)
+                        self.reiniciarFormulario()
+                    }catch _{
+                        self.present(controlador: UIAlertController(bonbonTipo: .error, mensaje: "Ha ocurrido un error al intentar crear la receta"), tipo: UIAlertController.BonbonAlertType.error)
                     }
-                    
-                }.resume()
-            }catch let error{
-                print(error)
-                self.mostrarMensajeDeError(mensaje: "Error al crear receta")
-            }
-    }
-    
-    func validarFormulario(){
-       //self.
-        
-    }
-    
-    func verificarFormulario() -> Bool{
-        return true
-    }
-    
-    func mostrarMensajeDeError(mensaje: String){
-        if(defaults.bool(forKey: "vibracion")){
-            AudioServicesPlaySystemSound(SystemSoundID(4095))
+                }
+            }.resume()
+        }catch _{
+            self.present(controlador: UIAlertController(bonbonTipo: .error, mensaje: "Ha ocurrido un error al intentar crear la receta"), tipo: UIAlertController.BonbonAlertType.error)
         }
-        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
     }
     
-    func mostrarMensajeCorrecto(mensaje: String){
-        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true)
+    func reiniciarFormulario(){
+        self.nombreRecetaText.text = ""
+        self.procedimientoText.text = ""
+        self.dificultadControl.selectedSegmentIndex = 0
+        self.tiempoCoccionText.text = ""
+        self.categoriaPicker.selectRow(0, inComponent: 0, animated: true)
     }
-    
-    
 }
 

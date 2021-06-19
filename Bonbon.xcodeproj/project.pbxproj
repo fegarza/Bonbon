@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		BE141D8F2679895F00D2D8E5 /* BonbonTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE141D8E2679895F00D2D8E5 /* BonbonTabBarController.swift */; };
 		BE141D9726798D7300D2D8E5 /* PreferenciasController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE141D9626798D7300D2D8E5 /* PreferenciasController.swift */; };
+		BE35A5BB267D7A510065A7D9 /* URLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35A5BA267D7A510065A7D9 /* URLRequestExtension.swift */; };
+		BE35A5BD267D7B100065A7D9 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35A5BC267D7B100065A7D9 /* UIAlertControllerExtension.swift */; };
+		BE35A5C1267D877F0065A7D9 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35A5C0267D877F0065A7D9 /* UIViewControllerExtension.swift */; };
+		BE3DF1FD267E5D2A002DDD27 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3DF1FC267E5D2A002DDD27 /* Validatable.swift */; };
+		BE3DF1FF267E5D85002DDD27 /* RecetaValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3DF1FE267E5D85002DDD27 /* RecetaValidator.swift */; };
+		BE3DF201267E649E002DDD27 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3DF200267E649E002DDD27 /* UITextFieldExtension.swift */; };
 		BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FE82676D56500B4591B /* AppDelegate.swift */; };
 		BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */; };
 		BE6A5FED2676D56500B4591B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A5FEC2676D56500B4591B /* ViewController.swift */; };
@@ -20,7 +26,6 @@
 		BE6AC20A267832A400F07769 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC209267832A400F07769 /* APIManager.swift */; };
 		BE6AC2152678342D00F07769 /* Operacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC2142678342D00F07769 /* Operacion.swift */; };
 		BE6AC21D2678372100F07769 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC21C2678372000F07769 /* ErrorManager.swift */; };
-		BE6AC2222678393700F07769 /* PeticionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AC2212678393700F07769 /* PeticionBuilder.swift */; };
 		BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187892676EF1700E9DD19 /* ListadoController.swift */; };
 		BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187912676EF3600E9DD19 /* CreadoController.swift */; };
 		BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA187962676EF4400E9DD19 /* EditadoController.swift */; };
@@ -48,6 +53,12 @@
 /* Begin PBXFileReference section */
 		BE141D8E2679895F00D2D8E5 /* BonbonTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonbonTabBarController.swift; sourceTree = "<group>"; };
 		BE141D9626798D7300D2D8E5 /* PreferenciasController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenciasController.swift; sourceTree = "<group>"; };
+		BE35A5BA267D7A510065A7D9 /* URLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtension.swift; sourceTree = "<group>"; };
+		BE35A5BC267D7B100065A7D9 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		BE35A5C0267D877F0065A7D9 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		BE3DF1FC267E5D2A002DDD27 /* Validatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validatable.swift; sourceTree = "<group>"; };
+		BE3DF1FE267E5D85002DDD27 /* RecetaValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaValidator.swift; sourceTree = "<group>"; };
+		BE3DF200267E649E002DDD27 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		BE6A5FE52676D56500B4591B /* Bonbon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bonbon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6A5FE82676D56500B4591B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +76,6 @@
 		BE6AC209267832A400F07769 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BE6AC2142678342D00F07769 /* Operacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operacion.swift; sourceTree = "<group>"; };
 		BE6AC21C2678372000F07769 /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
-		BE6AC2212678393700F07769 /* PeticionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeticionBuilder.swift; sourceTree = "<group>"; };
 		BEA187892676EF1700E9DD19 /* ListadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoController.swift; sourceTree = "<group>"; };
 		BEA187912676EF3600E9DD19 /* CreadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreadoController.swift; sourceTree = "<group>"; };
 		BEA187962676EF4400E9DD19 /* EditadoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditadoController.swift; sourceTree = "<group>"; };
@@ -98,6 +108,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE35A5B9267D7A1B0065A7D9 /* Extensiones */ = {
+			isa = PBXGroup;
+			children = (
+				BE35A5BA267D7A510065A7D9 /* URLRequestExtension.swift */,
+				BE35A5BC267D7B100065A7D9 /* UIAlertControllerExtension.swift */,
+				BE35A5C0267D877F0065A7D9 /* UIViewControllerExtension.swift */,
+				BE3DF200267E649E002DDD27 /* UITextFieldExtension.swift */,
+			);
+			path = Extensiones;
+			sourceTree = "<group>";
+		};
+		BE3DF1FB267E5CF4002DDD27 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				BE3DF1FC267E5D2A002DDD27 /* Validatable.swift */,
+				BE3DF1FE267E5D85002DDD27 /* RecetaValidator.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
 		BE6A5FDC2676D56500B4591B = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +151,8 @@
 		BE6A5FE72676D56500B4591B /* Bonbon */ = {
 			isa = PBXGroup;
 			children = (
+				BE3DF1FB267E5CF4002DDD27 /* Validators */,
+				BE35A5B9267D7A1B0065A7D9 /* Extensiones */,
 				BE6AC2082678328900F07769 /* Manejadores */,
 				BEA187862676EEA900E9DD19 /* Controllers */,
 				BEA187852676EE9800E9DD19 /* Entidades */,
@@ -157,9 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				BE6AC209267832A400F07769 /* APIManager.swift */,
-				BE6AC2142678342D00F07769 /* Operacion.swift */,
 				BE6AC21C2678372000F07769 /* ErrorManager.swift */,
-				BE6AC2212678393700F07769 /* PeticionBuilder.swift */,
 			);
 			path = Manejadores;
 			sourceTree = "<group>";
@@ -167,6 +197,7 @@
 		BEA187852676EE9800E9DD19 /* Entidades */ = {
 			isa = PBXGroup;
 			children = (
+				BE6AC2142678342D00F07769 /* Operacion.swift */,
 				BEA1879B2676EF5400E9DD19 /* Receta.swift */,
 				BEA187A02676EF9100E9DD19 /* Categoria.swift */,
 			);
@@ -316,19 +347,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEA1879C2676EF5400E9DD19 /* Receta.swift in Sources */,
+				BE3DF1FD267E5D2A002DDD27 /* Validatable.swift in Sources */,
 				BEA187A12676EF9100E9DD19 /* Categoria.swift in Sources */,
 				BE6A5FED2676D56500B4591B /* ViewController.swift in Sources */,
+				BE3DF1FF267E5D85002DDD27 /* RecetaValidator.swift in Sources */,
 				BEA187922676EF3600E9DD19 /* CreadoController.swift in Sources */,
+				BE35A5C1267D877F0065A7D9 /* UIViewControllerExtension.swift in Sources */,
 				BE6AC21D2678372100F07769 /* ErrorManager.swift in Sources */,
 				BE6AC2152678342D00F07769 /* Operacion.swift in Sources */,
-				BE6AC2222678393700F07769 /* PeticionBuilder.swift in Sources */,
+				BE35A5BB267D7A510065A7D9 /* URLRequestExtension.swift in Sources */,
 				BE6A5FE92676D56500B4591B /* AppDelegate.swift in Sources */,
 				BE141D8F2679895F00D2D8E5 /* BonbonTabBarController.swift in Sources */,
+				BE3DF201267E649E002DDD27 /* UITextFieldExtension.swift in Sources */,
 				BEA1878A2676EF1700E9DD19 /* ListadoController.swift in Sources */,
 				BEA187972676EF4400E9DD19 /* EditadoController.swift in Sources */,
 				BE6AC20A267832A400F07769 /* APIManager.swift in Sources */,
 				BE141D9726798D7300D2D8E5 /* PreferenciasController.swift in Sources */,
 				BE6A5FEB2676D56500B4591B /* SceneDelegate.swift in Sources */,
+				BE35A5BD267D7B100065A7D9 /* UIAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

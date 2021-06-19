@@ -57,6 +57,8 @@ class EditadoController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             break;
         }
         
+        self.textTiempoCoccion.addDoneButtonToKeyboard(myAction:  #selector(self.textTiempoCoccion.resignFirstResponder));
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -78,50 +80,50 @@ class EditadoController: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     
     @IBAction func guardar(_ sender: UIButton) {
+        let recetaAEditar = self.traerReceta()
         
+        let validador = RecetaValidator(receta: recetaAEditar);
+        
+        if(validador.isValid()){
+            self.editarReceta(receta: recetaAEditar)
+        }else{
+            self.present(controlador: UIAlertController(bonbonTipo: .error, mensaje: validador.getErrors()), tipo: UIAlertController.BonbonAlertType.error)
+        }
+    }
+    
+    func traerReceta() -> Receta{
+        return Receta(RecetaID: recetaSeleccionada!.RecetaID, Nombre: self.tfNombre.text, Descripcion: self.textProcedimiento.text, Dificultad: self.swDificultad.titleForSegment(at: self.swDificultad.selectedSegmentIndex), TiempoCoccion: self.textTiempoCoccion.text, Categoria: String(describing: Categoria.allCases[self.pickerCategoria.selectedRow(inComponent: 0)]), NUsuario: recetaSeleccionada?.NUsuario)
+    }
+    
+    func actualizarRecetaSeleccionada(receta : Receta){
+        recetaSeleccionada!.Categoria = receta.Categoria ;
+        recetaSeleccionada!.TiempoCoccion = receta.TiempoCoccion
+        recetaSeleccionada!.Descripcion = receta.Descripcion
+        recetaSeleccionada!.Nombre = receta.Nombre
+        recetaSeleccionada!.Dificultad = receta.Dificultad
+    }
+    
+    
+    func editarReceta(receta: Receta){
         do{
-            
-            recetaSeleccionada!.Categoria = String(describing: Categoria.allCases[self.pickerCategoria.selectedRow(inComponent: 0)]);
-            recetaSeleccionada!.TiempoCoccion = self.textTiempoCoccion.text
-            recetaSeleccionada!.Descripcion = self.textProcedimiento.text
-            recetaSeleccionada!.Nombre = self.tfNombre.text
-            recetaSeleccionada!.Dificultad = self.swDificultad.titleForSegment(at: self.swDificultad.selectedSegmentIndex)
-            
-           // let creadorDePeticion = PeticionBuilder(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
-            
-            let peticion = try  URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: recetaSeleccionada!)
+            let peticion = try  URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.edicion, receta: receta)
             
             URLSession.shared.dataTask(with: peticion)
             {
                 (data, response, error) in
                 DispatchQueue.main.async
                 {
-                    print(response)
-                    self.mostrarMensajeCorrecto(mensaje: "La receta ha sido añadida")
+                    self.present(controlador: UIAlertController(bonbonTipo: .informativo, mensaje: "Se ha creado editado la receta con exito"), tipo: UIAlertController.BonbonAlertType.informativo)
+                    self.actualizarRecetaSeleccionada(receta: receta)
                 }
-                
             }.resume()
-        }catch let error{
-            print(error)
-            self.mostrarMensajeDeError(mensaje: "Error al crear receta")
+        }catch _{
+            self.present(controlador: UIAlertController(bonbonTipo: .error, mensaje: "Ha ocurrido un error al intentar editar la receta"), tipo: UIAlertController.BonbonAlertType.error)
         }
-    }
-    
-    func mostrarMensajeDeError(mensaje: String){
-        if(defaults.bool(forKey: "vibracion")){
-            AudioServicesPlaySystemSound(SystemSoundID(4095))
-        }
-        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
-    func mostrarMensajeCorrecto(mensaje: String){
-        let alert = UIAlertController(title: "Aviso", message: mensaje, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: nil))
         
-        self.present(alert, animated: true)
     }
+    
+    
     
     
 }

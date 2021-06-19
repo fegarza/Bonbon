@@ -11,38 +11,29 @@ import UIKit
 
 class ListadoController: UITableViewController, UIGestureRecognizerDelegate {
     
-    
     override func viewDidLoad() {
-        traerDatos()
+        self.traerDatos()
+        
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-           longPressGesture.minimumPressDuration = 0.5
-           self.tableView.addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.5
+        
+        self.tableView.addGestureRecognizer(longPressGesture)
     }
-    
     
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         let p = longPressGesture.location(in: self.tableView)
+        
         let indexPath = self.tableView.indexPathForRow(at: p)
+        
         if longPressGesture.state == UIGestureRecognizer.State.began {
-            let alerta = UIAlertController(title: "Eliminar", message: "Esta seguro que desea eliminarlo?", preferredStyle: .alert)
-            let btnSi = UIAlertAction(title: "SI", style: .destructive,  handler: {
+            self.present(controlador: UIAlertController(bonbonTipo: .confirmar, mensaje: "Esta seguro que desea eliminar la receta?",  handler: {
                 (alert: UIAlertAction) in
-                self.eliminarReceta(alert: alert, indexPath: indexPath!)
-            })
-            
-            let btnNo = UIAlertAction(title: "NO", style: .cancel,  handler: {
-                (alert: UIAlertAction) in
-                return
-            })
-            
-            alerta.addAction(btnSi)
-            alerta.addAction(btnNo)
-            
-            self.present(alerta, animated: true, completion: nil)
+                self.eliminarReceta( indexPath: indexPath!)
+            } ), tipo: UIAlertController.BonbonAlertType.confirmar)
         }
     }
     
-    func eliminarReceta(alert: UIAlertAction, indexPath: IndexPath){
+    func eliminarReceta(  indexPath: IndexPath){
         do{
             let peticion = try  URLRequest(endpoint: puntoDeAcceso, operacion: Operacion.baja, receta: recetas[indexPath.row])
             
@@ -51,19 +42,21 @@ class ListadoController: UITableViewController, UIGestureRecognizerDelegate {
                 (data, response, error) in
                 DispatchQueue.main.async
                 {
-                    self.traerDatos()
+                    recetas.remove(at: indexPath.row)
+                    self.tableView.reloadData()
                 }
                 
             }.resume()
         }catch let error{
             print(error)
-            //self.mostrarMensajeDeError(mensaje: "Error al crear receta")
         }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         traerDatos()
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,9 +75,12 @@ class ListadoController: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         recetaSeleccionada = recetas[indexPath.row]
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
         let editadoViewController = storyBoard.instantiateViewController(withIdentifier: "editarView") as! EditadoController
-        self.present(editadoViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(editadoViewController, animated: true)
+        //self.present(editadoViewController, animated: true, completion: nil)
     }
     
     
