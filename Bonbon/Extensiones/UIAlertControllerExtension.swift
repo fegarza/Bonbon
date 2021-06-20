@@ -2,7 +2,7 @@
 //  UIAlertControllerExtension.swift
 //  Bonbon
 //
-//  Created by Felipe Garza on 18/06/21.
+//  Created by Angel Mendez on 18/06/21.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  PreferenciasController.swift
 //  Bonbon
 //
-//  Created by Felipe Garza on 15/06/21.
+//  Created by Angel Mendez on 15/06/21.
 //
 
 import Foundation
