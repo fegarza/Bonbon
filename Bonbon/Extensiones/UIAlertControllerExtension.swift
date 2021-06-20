@@ -2,35 +2,13 @@
 //  UIAlertControllerExtension.swift
 //  Bonbon
 //
-//  Created by Angel Mendez on 18/06/21.
+//  Created by Felipe Garza on 18/06/21.
 //
 
 import Foundation
 import UIKit
 import AVFoundation
 import AudioToolbox
-
-
-
-/*
-extension UIAlertAction{
-    static func generarAcciones(bonbonTipo: BonbonAlertType,  handler: ((UIAlertAction) -> Void)? = nil) -> [UIAlertAction]{
-        var acciones : [UIAlertAction] = []
-        
-        switch bonbonTipo{
-        case BonbonAlertType.confirmar:
-            acciones.append(UIAlertAction(title:"Cancelar", style: .cancel, handler: nil))
-            acciones.append(UIAlertAction(title:"Confirmar", style: .cancel, handler: handler))
-            return acciones
-        case BonbonAlertType.error:
-            acciones.append(UIAlertAction(title:"Confirmar", style: .default, handler: handler))
-            return acciones
-        default:
-            return acciones;
-        }
-    }
-    
-}*/
 
 extension UIAlertController{
         
