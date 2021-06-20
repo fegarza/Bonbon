@@ -158,7 +158,6 @@
 				BEA187852676EE9800E9DD19 /* Entidades */,
 				BE6A5FE82676D56500B4591B /* AppDelegate.swift */,
 				BE6A5FEA2676D56500B4591B /* SceneDelegate.swift */,
-				BE6A5FEC2676D56500B4591B /* ViewController.swift */,
 				BE6A5FEE2676D56500B4591B /* Main.storyboard */,
 				BE6A5FF12676D56600B4591B /* Assets.xcassets */,
 				BE6A5FF32676D56600B4591B /* LaunchScreen.storyboard */,
@@ -207,6 +206,7 @@
 		BEA187862676EEA900E9DD19 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE6A5FEC2676D56500B4591B /* ViewController.swift */,
 				BEA187892676EF1700E9DD19 /* ListadoController.swift */,
 				BEA187912676EF3600E9DD19 /* CreadoController.swift */,
 				BEA187962676EF4400E9DD19 /* EditadoController.swift */,
